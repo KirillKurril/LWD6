@@ -153,3 +153,48 @@ void SearchTree<T>::remove(size_t key)
         }
     }
 }
+
+template <typename T>
+size_t SearchTree<T>::pre_order_traversal(Node* ptr_, size_t& counter)
+{
+    if (ptr_) {
+        counter += ptr_->data.second();
+        std::cout<<ptr_->data.first();
+        pre_order_traversal(ptr_->left_, counter);
+        pre_order_traversal(ptr_->right_, counter);
+    }
+}
+
+template <typename T>
+size_t SearchTree<T>::in_order_traversal(Node* ptr_, size_t& counter)
+{
+    if (ptr_) {
+        pre_order_traversal(ptr_->left_, counter);
+        counter += ptr_->data.second();
+        std::cout<<ptr_->data.first();
+        pre_order_traversal(ptr_->right_, counter);
+
+    }
+}
+
+template <typename T>
+size_t SearchTree<T>::post_order_traversal(Node* ptr_, size_t& counter)
+{
+    if (ptr_) {
+        pre_order_traversal(ptr_->left_, counter);
+        pre_order_traversal(ptr_->right_, counter);
+        counter += ptr_->data.second();
+        std::cout<<ptr_->data.first();
+    }
+}
+
+template <typename T>
+void SearchTree<T>::clear()
+{
+    root = nullptr;
+}
+
+template <typename T>
+typename SearchTree<T>::Node* SearchTree<T>::GetRoot(){
+    return root;
+}
