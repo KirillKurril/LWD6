@@ -1,30 +1,38 @@
 //
 // Created by Урфин-Джус on 29.04.2023.
 //
-template<typename T1, typename  T2>
-class Pair;
-
 #ifndef LWD6_1_SEARCHTREE_H
 #define LWD6_1_SEARCHTREE_H
 
+#include <iostream>
+#include <cstddef>
+#include <string>
+#include <exception>
+#include "Pair.h"
+
 template <typename T>
 class SearchTree {
-    struct Node{
-        Pair<size_t, > data;
-    };
-};
-
-template<typename T1, typename  T2>
-class Pair{
 public:
-    T1& first() { return _first; }
-    T2& second() { return _second; }
 
-    void setFirst(const T1& first) { _first = first; }
-    void setSecond(const T2& second) { _second = second; }
-    Pair(T1 first, T2 second) : _first(first), _second(second){}
+    void Insert(size_t key, T value);
+    SearchTree() {root = nullptr;}
+    bool IsEmpty();
+    T IterSearch(size_t key);
+    T RecSearch(size_t key);
+    void remove(size_t key);
+
 private:
-    T1 _first;
-    T2 _second;
+    struct Node{
+        Pair<size_t, T> data;
+        Node* left_ = nullptr;
+        Node* right_ = nullptr;
+        Node* parent_ = nullptr;
+        explicit Node (int key, T value = nullptr, Node* left = nullptr, Node* right = nullptr, Node* parent = nullptr) : data(key, value), left_(left), right_(right), parent_(parent) {}
+    };
+    Node* recsch(size_t key, Node* ptr_);
+    void insert(size_t key, Node* ptr_, T value);
+    Node* root = nullptr;
 };
+
+
 #endif //LWD6_1_SEARCHTREE_H
