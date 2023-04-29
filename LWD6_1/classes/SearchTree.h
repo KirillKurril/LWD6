@@ -1,8 +1,6 @@
 //
 // Created by Урфин-Джус on 29.04.2023.
 //
-#ifndef LWD6_1_SEARCHTREE_H
-#define LWD6_1_SEARCHTREE_H
 
 #include <iostream>
 #include <cstddef>
@@ -39,4 +37,3 @@ private:
 };
 
 
-#endif //LWD6_1_SEARCHTREE_H

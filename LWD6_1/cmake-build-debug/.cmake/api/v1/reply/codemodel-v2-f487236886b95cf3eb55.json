@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "E:/CODE/LWD6/LWD6_1/cmake-build-debug",
-		"source" : "E:/CODE/LWD6/LWD6_1"
+		"build" : "C:/C++/Labs/Lab6/LWD6_1/cmake-build-debug",
+		"source" : "C:/C++/Labs/Lab6/LWD6_1"
 	},
 	"version" : 
 	{
