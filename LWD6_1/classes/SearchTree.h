@@ -25,9 +25,9 @@ public:
     T IterSearch(size_t key);
     T RecSearch(size_t key);
     void remove(size_t key);
-    size_t pre_order_traversal(Node* ptr_, size_t& counter);
-    size_t in_order_traversal(Node* ptr_, size_t& counter);
-    size_t post_order_traversal(Node* ptr_, size_t& counter);
+    void pre_order_traversal(Node* ptr_, size_t& counter);
+    void in_order_traversal(Node* ptr_, size_t& counter);
+    void post_order_traversal(Node* ptr_, size_t& counter);
     void clear();
     Node* GetRoot();
 

@@ -155,7 +155,7 @@ void SearchTree<T>::remove(size_t key)
 }
 
 template <typename T>
-size_t SearchTree<T>::pre_order_traversal(Node* ptr_, size_t& counter)
+void SearchTree<T>::pre_order_traversal(Node* ptr_, size_t& counter)
 {
     if (ptr_) {
         counter += ptr_->data.second();
@@ -166,7 +166,7 @@ size_t SearchTree<T>::pre_order_traversal(Node* ptr_, size_t& counter)
 }
 
 template <typename T>
-size_t SearchTree<T>::in_order_traversal(Node* ptr_, size_t& counter)
+void SearchTree<T>::in_order_traversal(Node* ptr_, size_t& counter)
 {
     if (ptr_) {
         pre_order_traversal(ptr_->left_, counter);
@@ -178,7 +178,7 @@ size_t SearchTree<T>::in_order_traversal(Node* ptr_, size_t& counter)
 }
 
 template <typename T>
-size_t SearchTree<T>::post_order_traversal(Node* ptr_, size_t& counter)
+void SearchTree<T>::post_order_traversal(Node* ptr_, size_t& counter)
 {
     if (ptr_) {
         pre_order_traversal(ptr_->left_, counter);

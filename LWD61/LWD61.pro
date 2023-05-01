@@ -12,14 +12,12 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     pair.cpp \
-    searchtree.cpp \
-    vector.cpp
+    searchtree.cpp
 
 HEADERS += \
     mainwindow.h \
     pair.h \
-    searchtree.h \
-    vector.h
+    searchtree.h
 
 FORMS += \
     mainwindow.ui

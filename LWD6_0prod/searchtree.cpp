@@ -1,5 +1,6 @@
 #include "searchtree.h"
 
+
 //
 // Created by Урфин-Джус on 29.04.2023.
 //
@@ -40,10 +41,10 @@ typename SearchTree<T>::Node* SearchTree<T>::recsch(size_t key, Node* ptr_)
 {
     if (ptr_->data.first() == key || ptr_ == nullptr)
         return ptr_;
-    else if(ptr_->data.first() < key)
-        return recsch(key, ptr_->left_);
-    else
+    else if(key > ptr_->data.first())
         return recsch(key, ptr_->right_);
+    else
+        return recsch(key, ptr_->left_);
 }
 
 template <typename T>
@@ -59,31 +60,32 @@ T SearchTree<T>::RecSearch(size_t key)
 template <typename T>
 void SearchTree<T>::Insert(size_t key, T value)
 {
-    if (root == nullptr)
+    if (!root)
     {
         root = new Node(key, value);
         return;
     }
     Node* ptr_ = root;
-    while(ptr_)
+    while(true)
     {
         if (ptr_->data.first() == key)
             return;
-        else if (ptr_->data.first() < key) {
-            ptr_->parent_ = ptr_;
-            ptr_ = ptr_->left_;
-        }
-        else {
+        else if (key > ptr_->data.first()) {
+            if (!ptr_->right_) break;
             ptr_->parent_ = ptr_;
             ptr_ = ptr_->right_;
         }
+        else {
+            if (!ptr_->left_) break;
+            ptr_->parent_ = ptr_;
+            ptr_ = ptr_->left_;
+        }
     }
-    ptr_ = new Node(key, value);
-    if (ptr_->data.first() < ptr_->parent_->data.first()) {
-        ptr_->parent_->left_ = ptr_;
+    if (key < ptr_->data.first()) {
+        ptr_->left_ = new Node(key, value);;
     }
     else {
-        ptr_->parent_->right_ = ptr_;
+        ptr_->right_ = new Node(key, value);;
     }
 }
 
@@ -160,43 +162,34 @@ void SearchTree<T>::remove(size_t key)
     }
 }
 
-template<typename T>
-void SearchTree<T>::take_a_look()
-{
-
-}
-
 template <typename T>
-size_t SearchTree<T>::pre_order_traversal(Node* ptr_, size_t& counter)
+void SearchTree<T>::pre_order_traversal(Node* ptr_, QString& output)
 {
     if (ptr_) {
-        counter += ptr_->data.second();
-        std::cout<<ptr_->data.first();
-        pre_order_traversal(ptr_->left_, counter);
-        pre_order_traversal(ptr_->right_, counter);
+        output += ptr_->data.second() + ' ';
+        pre_order_traversal(ptr_->left_, output);
+        pre_order_traversal(ptr_->right_, output);
     }
 }
 
 template <typename T>
-size_t SearchTree<T>::in_order_traversal(Node* ptr_, size_t& counter)
+void SearchTree<T>::in_order_traversal(Node* ptr_, QString& output)
 {
     if (ptr_) {
-        pre_order_traversal(ptr_->left_, counter);
-        counter += ptr_->data.second();
-        std::cout<<ptr_->data.first();
-        pre_order_traversal(ptr_->right_, counter);
+        in_order_traversal(ptr_->left_, output);
+        output += ptr_->data.second() + ' ';
+        in_order_traversal(ptr_->right_, output);
 
     }
 }
 
 template <typename T>
-size_t SearchTree<T>::post_order_traversal(Node* ptr_, size_t& counter)
+void SearchTree<T>::post_order_traversal(Node* ptr_, QString& output)
 {
     if (ptr_) {
-        pre_order_traversal(ptr_->left_, counter);
-        pre_order_traversal(ptr_->right_, counter);
-        counter += ptr_->data.second();
-        std::cout<<ptr_->data.first();
+        post_order_traversal(ptr_->right_, output);
+        post_order_traversal(ptr_->left_, output);
+        output += ptr_->data.second() + ' ';
     }
 }
 

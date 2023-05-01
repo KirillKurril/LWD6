@@ -1,9 +1,5 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#include "searchtree.h"
-#include "pair.h"
-#include "vector.h"
-#include "searchtree.cpp"
 
 #include <QMainWindow>
 
@@ -18,12 +14,6 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    SearchTree<QString> dub;
-    Pair<size_t, QString>* arr;
-    size_t arr_size = 0;
-
-private slots:
-    void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;

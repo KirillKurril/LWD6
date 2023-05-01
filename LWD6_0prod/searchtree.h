@@ -2,7 +2,7 @@
 #define SEARCHTREE_H
 
 
-
+#include <QString>
 #include <iostream>
 #include <cstddef>
 #include <string>
@@ -27,9 +27,9 @@ public:
     T RecSearch(size_t key);
     void remove(size_t key);
     void take_a_look();
-    size_t pre_order_traversal(Node* ptr_, size_t& counter);
-    size_t in_order_traversal(Node* ptr_, size_t& counter);
-    size_t post_order_traversal(Node* ptr_, size_t& counter);
+    void pre_order_traversal(Node* ptr_, QString& output);
+    void in_order_traversal(Node* ptr_, QString& output);
+    void post_order_traversal(Node* ptr_, QString& output);
     void clear();
     Node* GetRoot();
 
