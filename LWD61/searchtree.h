@@ -18,10 +18,14 @@ class SearchTree {
         Node* left_ = nullptr;
         Node* right_ = nullptr;
         Node* parent_ = nullptr;
+        size_t height_;
         explicit Node (int key, T value = nullptr, Node* left = nullptr, Node* right = nullptr, Node* parent = nullptr) : data(key, value), left_(left), right_(right), parent_(parent) {}
     };
 
-
+    size_t height(Node* node);
+    size_t balance(Node* node);
+    Node* leftRotate(Node* node);
+    Node* rightRotate(Node* node);
     void Insert(size_t key, T value);
     SearchTree() {root = nullptr;}
     bool IsEmpty();
