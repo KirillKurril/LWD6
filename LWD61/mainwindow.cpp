@@ -1,6 +1,37 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+void MainWindow::display(SearchTree<QString>::Node* node, QTreeWidgetItem* parent) {
+    if (node == nullptr) {
+        return;
+    }
+    QTreeWidgetItem* item = new QTreeWidgetItem(parent);
+    item->setText(0, node->data.second());
+    display(node->left_, item);
+    display(node->right_, item);
+}
+
+void MainWindow::Obhod()
+{
+    QString situation, counter;
+    dub.pre_order_traversal(dub.GetRoot(), situation);
+    counter = QString::number(situation.size()/2);
+    situation += '\n';
+    dub.in_order_traversal(dub.GetRoot(), situation);
+    situation += '\n';
+    dub.post_order_traversal(dub.GetRoot(), situation);
+    situation += "\nAmount of chars: " + counter;
+    ui->plainTextEdit->setPlainText(situation);
+
+    ui->treeWidget->clear();
+        QTreeWidgetItem* rootItem = new QTreeWidgetItem(ui->treeWidget);
+        rootItem->setText(0, "Root");
+
+        display(dub.GetRoot(), rootItem);
+
+        ui->treeWidget->expandAll();
+}
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -29,14 +60,7 @@ void MainWindow::on_pushButton_clicked()
        ui->tableWidget->setItem(i, 0, new QTableWidgetItem(QString::number(arr[i].first())));
        ui->tableWidget->setItem(i, 1, new QTableWidgetItem(arr[i].second()));
    }
-    QString situation;
-    dub.pre_order_traversal(dub.GetRoot(), situation);
-    situation += '\n';
-    dub.in_order_traversal(dub.GetRoot(), situation);
-    situation += '\n';
-    dub.post_order_traversal(dub.GetRoot(), situation);
-    situation += '\n';
-    ui->plainTextEdit->setPlainText(situation);
+   Obhod();
 }
 
 
@@ -58,14 +82,7 @@ void MainWindow::on_pushButton_5_clicked()
     dub.Insert(3,"3");
     dub.Insert(5,"5");
     dub.Insert(8,"8");
-    QString situation;
-    dub.pre_order_traversal(dub.GetRoot(), situation);
-    situation += '\n';
-    dub.in_order_traversal(dub.GetRoot(), situation);
-    situation += '\n';
-    dub.post_order_traversal(dub.GetRoot(), situation);
-    situation += '\n';
-    ui->plainTextEdit->setPlainText(situation);
+    Obhod();
 }
 
 
@@ -73,5 +90,7 @@ void MainWindow::on_pushButton_3_clicked()
 {
     size_t key = ui->lineEdit->text().toUInt();
     dub.remove(key);
+    Obhod();
+
 }
 

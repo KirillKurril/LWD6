@@ -39,13 +39,48 @@ T SearchTree<T>::IterSearch(size_t key)
 template <typename T>
 typename SearchTree<T>::Node* SearchTree<T>::recsch(size_t key, Node* ptr_)
 {
-    if (ptr_->data.first() == key || ptr_ == nullptr)
+    if (ptr_ == nullptr || ptr_->data.first() == key)
         return ptr_;
     else if(key > ptr_->data.first())
         return recsch(key, ptr_->right_);
     else
         return recsch(key, ptr_->left_);
 }
+
+int balance(SearchTree<T>::Node* node) {
+       if (node == NULL) {
+           return 0;
+       }
+       return height(node->left) - height(node->right);
+   }
+
+template <typename T>
+   SearchTree<T>::Node* rightRotate(SearchTree<T>::Node* node) {
+       SearchTree<T>::Node* left = node->left;
+       SearchTree<T>::Node* rightOfLeft = left->right;
+
+       left->right = node;
+       node->left = rightOfLeft;
+
+       node->height = max(height(node->left), height(node->right)) + 1;
+       left->height = max(height(left->left), height(left->right)) + 1;
+
+       return left;
+   }
+
+   template <typename T>
+   SearchTree<T>::Node* leftRotate(SearchTree<T>::Node* node) {
+       SearchTree<T>::Node* right = node->right_;
+       SearchTree<T>::Node* leftOfRight = right->left_;
+
+       right->left_ = node;
+       node->right_ = leftOfRight;
+
+       node->height = max(height(node->left_), height(node->right_)) + 1;
+       right->height = max(height(right->left_), height(right->right_)) + 1;
+
+       return right;
+   }
 
 template <typename T>
 T SearchTree<T>::RecSearch(size_t key)
@@ -81,11 +116,18 @@ void SearchTree<T>::Insert(size_t key, T value)
             ptr_ = ptr_->left_;
         }
     }
+
     if (key < ptr_->data.first()) {
-        ptr_->left_ = new Node(key, value);;
+        qDebug() << ptr_->left_;
+        ptr_->left_ = new Node(key, value);
+        ptr_->left_->parent_ = ptr_;
+        qDebug() << ptr_->left_->parent_;
     }
     else {
-        ptr_->right_ = new Node(key, value);;
+        qDebug() << ptr_->right_;
+        ptr_->right_ = new Node(key, value);
+        ptr_->right_->parent_ = ptr_;
+        qDebug() << ptr_->right_->parent_;
     }
 }
 

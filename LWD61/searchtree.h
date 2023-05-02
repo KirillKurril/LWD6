@@ -12,6 +12,7 @@
 
 template <typename T>
 class SearchTree {
+    public:
     struct Node{
         Pair<size_t, T> data;
         Node* left_ = nullptr;
@@ -19,7 +20,7 @@ class SearchTree {
         Node* parent_ = nullptr;
         explicit Node (int key, T value = nullptr, Node* left = nullptr, Node* right = nullptr, Node* parent = nullptr) : data(key, value), left_(left), right_(right), parent_(parent) {}
     };
-public:
+
 
     void Insert(size_t key, T value);
     SearchTree() {root = nullptr;}

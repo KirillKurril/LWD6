@@ -3,6 +3,8 @@
 #include "searchtree.h"
 #include "pair.h"
 #include "searchtree.cpp"
+#include <QTreeWidgetItem>
+
 
 #include <QMainWindow>
 
@@ -15,6 +17,8 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    void Obhod();
+    void display(SearchTree<QString>::Node* node, QTreeWidgetItem* parent);
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     SearchTree<QString> dub;
