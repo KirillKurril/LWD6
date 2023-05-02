@@ -36,6 +36,13 @@ T SearchTree<T>::IterSearch(size_t key)
 
 }
 
+size_t height(SearchTree<T>::Node* node) {
+        if (node == NULL) {
+            return 0;
+        }
+        return node->height_;
+    }
+
 template <typename T>
 typename SearchTree<T>::Node* SearchTree<T>::recsch(size_t key, Node* ptr_)
 {
@@ -47,23 +54,23 @@ typename SearchTree<T>::Node* SearchTree<T>::recsch(size_t key, Node* ptr_)
         return recsch(key, ptr_->left_);
 }
 
-int balance(SearchTree<T>::Node* node) {
+size_t balance(SearchTree<T>::Node* node) {
        if (node == NULL) {
            return 0;
        }
-       return height(node->left) - height(node->right);
+       return height(node->left_) - height(node->right_);
    }
 
 template <typename T>
    SearchTree<T>::Node* rightRotate(SearchTree<T>::Node* node) {
-       SearchTree<T>::Node* left = node->left;
-       SearchTree<T>::Node* rightOfLeft = left->right;
+       SearchTree<T>::Node* left = node->left_;
+       SearchTree<T>::Node* rightOfLeft = left->right_;
 
-       left->right = node;
-       node->left = rightOfLeft;
+       left->right_ = node;
+       node->left_ = rightOfLeft;
 
-       node->height = max(height(node->left), height(node->right)) + 1;
-       left->height = max(height(left->left), height(left->right)) + 1;
+       node->height_ = max(height(node->left_), height(node->right_)) + 1;
+       left->height_ = max(height(left->left_), height(left->right_)) + 1;
 
        return left;
    }
@@ -76,8 +83,8 @@ template <typename T>
        right->left_ = node;
        node->right_ = leftOfRight;
 
-       node->height = max(height(node->left_), height(node->right_)) + 1;
-       right->height = max(height(right->left_), height(right->right_)) + 1;
+       node->height_ = std::max(height(node->left_), height(node->right_)) + 1;
+       right->height_ = std::max(height(right->left_), height(right->right_)) + 1;
 
        return right;
    }
