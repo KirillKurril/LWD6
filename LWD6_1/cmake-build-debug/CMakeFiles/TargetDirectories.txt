@@ -1,3 +1,0 @@
-C:/C++/Labs/Lab6/LWD6_1/cmake-build-debug/CMakeFiles/LWD6_1.dir
-C:/C++/Labs/Lab6/LWD6_1/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/C++/Labs/Lab6/LWD6_1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
