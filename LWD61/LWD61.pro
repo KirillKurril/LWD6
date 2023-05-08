@@ -15,6 +15,7 @@ SOURCES += \
     searchtree.cpp
 
 HEADERS += \
+    avltree.h \
     mainwindow.h \
     pair.h \
     searchtree.h

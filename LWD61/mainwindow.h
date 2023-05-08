@@ -1,8 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#include "searchtree.h"
 #include "pair.h"
-#include "searchtree.cpp"
+#include "avltree.h"
 #include <QTreeWidgetItem>
 
 
@@ -18,10 +17,10 @@ class MainWindow : public QMainWindow
 
 public:
     void Obhod();
-    void display(SearchTree<QString>::Node* node, QTreeWidgetItem* parent);
+    void display(AVLTree<QString>::Node* node, QTreeWidgetItem* parent);
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    SearchTree<QString> dub;
+    AVLTree<QString> dub;
     Pair<size_t, QString>* arr;
     size_t arr_size = 0;
 

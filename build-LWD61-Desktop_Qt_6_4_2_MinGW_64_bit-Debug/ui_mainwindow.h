@@ -42,7 +42,6 @@ public:
     QPushButton *pushButton;
     QPushButton *pushButton_2;
     QPushButton *pushButton_3;
-    QPushButton *pushButton_4;
     QPushButton *pushButton_5;
     QSpacerItem *verticalSpacer;
     QTableWidget *tableWidget;
@@ -104,11 +103,6 @@ public:
 
         verticalLayout->addWidget(pushButton_3);
 
-        pushButton_4 = new QPushButton(gridLayoutWidget);
-        pushButton_4->setObjectName("pushButton_4");
-
-        verticalLayout->addWidget(pushButton_4);
-
         pushButton_5 = new QPushButton(gridLayoutWidget);
         pushButton_5->setObjectName("pushButton_5");
 
@@ -159,7 +153,6 @@ public:
         pushButton->setText(QCoreApplication::translate("MainWindow", "Add", nullptr));
         pushButton_2->setText(QCoreApplication::translate("MainWindow", "Find", nullptr));
         pushButton_3->setText(QCoreApplication::translate("MainWindow", "Delete", nullptr));
-        pushButton_4->setText(QCoreApplication::translate("MainWindow", "Balance", nullptr));
         pushButton_5->setText(QCoreApplication::translate("MainWindow", "AutoVkid", nullptr));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QCoreApplication::translate("MainWindow", "\320\232\320\273\321\216\321\207", nullptr));
