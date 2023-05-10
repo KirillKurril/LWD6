@@ -4,14 +4,15 @@
 
 #include <cstdlib>
 #include"mystack.h"
+#include <QString>
 
 
 
 // Универсальная хеш-функция
 class UniversalHash {
 public:
-    UniversalHash(int size) {
-        m_a = rand() % (size - 1) + 1;
+    UniversalHash(int size = 5) {
+        m_a = (rand() % (size - 1)) + 1;
         m_b = rand() % size;
         m_p = 1000000007;
         m_size = size;
@@ -32,36 +33,28 @@ private:
 
 class HashTable {
 public:
-    HashTable(int size) {
-        m_table.resize(size);
-        m_size = size;
-        m_count = 0;
-        m_maxCollisions = 0;
-        m_totalCollisions = 0;
-        m_hash = UniversalHash(size);
+
+    MyStack* m_table = new MyStack[m_size];
+    int m_size = 5;
+    int m_count = 0;
+    UniversalHash m_hash;
+
+    HashTable() = default;
+    HashTable(int size) : m_hash(size), m_size(size) {
     }
 
-    void insert(int key, string value) {
+    void insert(int key, QString value) {
         int hash = m_hash(key);
-        while(m_table[hash].first != -1)
-        {
-            if (m_table[hash].first == key)
-            {
-                m_table[hash].second = value;
-                return;
-            }
-            hash = (hash + 1) % m_size;
-        }
-        m_table[hash] = make_pair(key, value);
-
+        m_table[hash].push(Pair<int, QString>(key, value));
+        ++m_count;
     }
 
-    string get(int key) {
+    QString get(int key) {
         int hash = m_hash(key);
 
-        while (m_table[hash].first != -1) {
-            if (m_table[hash].first == key) {
-                return m_table[hash].second;
+        while (!m_table[hash].isEmpty()) {
+            if (m_table[hash].topElement()->element.first == key) {
+                return m_table[hash].topElement()->element.second ;
             }
 
             hash = (hash + 1) % m_size;
@@ -72,10 +65,9 @@ public:
 
     void remove(int key) {
         int hash = m_hash(key);
-        while (m_table[hash].first != -1) {
-            if (m_table[hash].first == key) {
-                m_table[hash].first = -1;
-                m_table[hash].second = "";
+        while (!m_table[hash].isEmpty()) {
+            if (m_table[hash].topElement()->element.first == key) {
+                m_table[hash].pop();
                 m_count--;
                 return;
             }
@@ -84,15 +76,8 @@ public:
         }
     }
 
-
-
 private:
-    m_table;
-    int m_size;
-    int m_count;
-    int m_maxCollisions;
-    int m_totalCollisions;
-    UniversalHash m_hash;
+
 };
 
 

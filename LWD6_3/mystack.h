@@ -1,7 +1,6 @@
 #ifndef MYSTACK_H
 #define MYSTACK_H
 
-#include "dvector.h"
 #include <QString>
 
 template <typename T1, typename T2>
@@ -17,7 +16,7 @@ public:
 class Node
 {
 public:
-    DVector<Pair<int, QString>> element;
+    Pair<int, QString> element;
     Node* prev;
     Node();
     Node(const Node & ref);
@@ -34,7 +33,7 @@ public:
     MyStack();
     ~MyStack();
 
-    void push(char a);
+    void push(Pair<int, QString> a);
     Node* pop();
     Node* topElement();
     int count();

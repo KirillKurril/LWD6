@@ -13,7 +13,7 @@ MyStack::~MyStack()
     }
 }
 
-void MyStack::push(char a)
+void MyStack::push(Pair<int, QString> a)
 {
     Node* temp = new Node;
     temp->element = a;

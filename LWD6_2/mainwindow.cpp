@@ -44,7 +44,6 @@ void MainWindow::on_firstTable_button_clicked()
         }
         x1[times] = i;
         y1[times] = timer.elapsed();
-        qDebug() << "Elapsed time:" << timer.elapsed() << "milliseconds";
         ++times;
     }
     wGraphic->addGraph(wGraphic->xAxis, wGraphic->yAxis);
@@ -86,7 +85,6 @@ void MainWindow::on_secondTable_button_clicked()
         }
         x1[times] = i;
         y1[times] = timer.elapsed();
-        qDebug() << "Elapsed time:" << timer.elapsed() << "milliseconds";
         ++times;
     }
     wGraphic->addGraph(wGraphic->xAxis, wGraphic->yAxis);
@@ -127,7 +125,6 @@ void MainWindow::on_thirdTable_button_clicked()
         }
         x1[times] = i;
         y1[times] = timer.elapsed();
-        qDebug() << "Elapsed time:" << timer.elapsed() << "milliseconds";
         ++times;
     }
     wGraphic->addGraph(wGraphic->xAxis, wGraphic->yAxis);
@@ -168,7 +165,6 @@ void MainWindow::on_fourthTable_button_clicked()
         }
         x1[times] = i;
         y1[times] = timer.elapsed();
-        qDebug() << "Elapsed time:" << timer.elapsed() << "milliseconds";
         ++times;
     }
     wGraphic->addGraph(wGraphic->xAxis, wGraphic->yAxis);

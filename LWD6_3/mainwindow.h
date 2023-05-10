@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "hashtable.h"
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -15,7 +16,14 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_pushButton_5_clicked();
+
+    void on_pushButton_clicked();
+
 private:
+    void luk();
     Ui::MainWindow *ui;
+    HashTable stol = HashTable(5);
 };
 #endif // MAINWINDOW_H
