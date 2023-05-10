@@ -39,6 +39,7 @@ public:
     QSpacerItem *verticalSpacer;
     QPushButton *pushButton_2;
     QLineEdit *lineEdit_4;
+    QLineEdit *lineEdit;
     QSpacerItem *verticalSpacer_3;
     QPushButton *pushButton_3;
     QLineEdit *lineEdit_5;
@@ -52,7 +53,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(800, 600);
+        MainWindow->resize(490, 431);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         tableWidget = new QTableWidget(centralwidget);
@@ -174,6 +175,11 @@ public:
 
         verticalLayout->addWidget(lineEdit_4);
 
+        lineEdit = new QLineEdit(verticalLayoutWidget);
+        lineEdit->setObjectName("lineEdit");
+
+        verticalLayout->addWidget(lineEdit);
+
         verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout->addItem(verticalSpacer_3);
@@ -205,7 +211,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 22));
+        menubar->setGeometry(QRect(0, 0, 490, 22));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");

@@ -50,15 +50,18 @@ public:
     }
 
     QString get(int key) {
-        int hash = m_hash(key);
-
-        while (!m_table[hash].isEmpty()) {
-            if (m_table[hash].topElement()->element.first == key) {
-                return m_table[hash].topElement()->element.second ;
+        //int hash = m_hash(key);
+        for(int i = 0; i < m_size; i++)
+        {
+            Node* ptr = m_table[i].topElement();
+            while(ptr)
+            {
+                if (ptr->element.first == key)
+                    return ptr->element.second;
+                ptr = ptr->prev;
             }
-
-            hash = (hash + 1) % m_size;
         }
+
 
         return "";
     }
